@@ -30,7 +30,7 @@ export const datosEnvioVacios = { direccion: '', ciudad: '', metodoPago: '', pro
 export const costoEnvio = 5000;
 
 export const resumenEsperado = {
-  envio: 'Envío: $6000',
+  envio: 'Envío: $5000',
   propina: 'Propina: $500',
   propinaCero: 'Propina: $0',
 };
