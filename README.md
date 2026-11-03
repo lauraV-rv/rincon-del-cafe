@@ -16,12 +16,12 @@ rincon-del-cafe/
 │   ├── pages/                   PaginaLogin, PaginaCarrito, PaginaPago → únicos archivos con localizadores
 │   ├── fixtures/                login.js, pago.js → preparan la sesión y el carrito
 │   ├── tests/                   hu05-pago-envio.spec.js, login.spec.js → qué se verifica
-│   └── grabaciones-codegen/     grabaciones originales de codegen (no se ejecutan)
+│   └── grabaciones-codegen/     grabaciones originales de codegen
 ├── docs/
 │   ├── casos-de-prueba-HU05.md  matriz de casos y reporte del bug
 │   ├── pipeline-explicado.md    pipeline línea por línea, tarea del ci.yml y despliegue
 │   ├── historias-de-usuario.md
-│   └── evidencias/              capturas de Actions en verde y en rojo (las agregas tú)
+│   └── evidencias/              
 └── .github/workflows/
     └── pipeline.yml             job pruebas-aceptacion
 ```
