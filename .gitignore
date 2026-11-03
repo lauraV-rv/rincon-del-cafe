@@ -1,0 +1,20 @@
+# Dependencias (se instalan con npm ci)
+node_modules/
+
+# Resultados y reportes de Playwright (se generan en cada ejecución)
+pruebas/test-results/
+pruebas/playwright-report/
+pruebas/blob-report/
+pruebas/playwright/.cache/
+pruebas/playwright/.auth/
+
+# Log de la app cuando se levanta en segundo plano (pipeline)
+*.log
+
+# Variables de entorno locales
+.env
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
