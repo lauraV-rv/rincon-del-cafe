@@ -60,7 +60,7 @@ npm run reporte               # abre el reporte HTML con los traces
 
 ## Comprobar el pipeline
 
-   ```
+
 1. **Ver el pipeline:** pestaña **Actions** → *Pipeline pruebas de aceptación* → la ejecución del commit. Debe quedar en **verde** (11 casos pasan).
 2. **Descargar el reporte:** dentro de la ejecución, sección **Artifacts** → `playwright-report`.
 3. **Ejecución manual:** Actions → *Pipeline pruebas de aceptación* → **Run workflow**.
