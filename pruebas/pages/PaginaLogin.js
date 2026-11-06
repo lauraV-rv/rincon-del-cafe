@@ -1,4 +1,4 @@
-// Pantalla de inicio de sesión.
+
 export class PaginaLogin {
   constructor(page) {
     this.page = page;

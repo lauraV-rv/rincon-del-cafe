@@ -1,13 +1,10 @@
-// Datos de prueba de la HU-05 · Pago y envío.
-// Los precios salen de app/data/seed.json. Se usa cantidad 1 en todos los casos.
 
-// ---------- Productos que se agregan al carrito ----------
 export const productos = {
   latte: { nombre: 'Latte', cantidad: '1', subtotal: '$12000' },
   espresso: { nombre: 'Espresso', cantidad: '1', subtotal: '$8000' },
 };
 
-// ---------- Datos del formulario de pago ----------
+
 export const datosEnvio = {
   direccion: 'Calle 45 #12-56',
   ciudad: 'Cali',
@@ -17,7 +14,7 @@ export const datosEnvio = {
 
 export const datosEnvioSinPropina = { ...datosEnvio, propina: '0' };
 
-// Un caso por cada campo obligatorio (criterio 4).
+
 export const casosCamposObligatorios = [
   { campo: 'la dirección', datos: { ...datosEnvio, direccion: '' } },
   { campo: 'la ciudad', datos: { ...datosEnvio, ciudad: '' } },
@@ -50,7 +47,7 @@ export const totalesEsperados = [
   },
 ];
 
-// ---------- Mensajes y estados que muestra la app ----------
+
 export const mensajes = {
   totalCalculado: 'Total calculado',
   camposObligatorios: 'Dirección, ciudad y método de pago son obligatorios',

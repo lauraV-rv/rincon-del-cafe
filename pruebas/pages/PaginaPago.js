@@ -1,27 +1,20 @@
-// Pantalla "Pago y envío" (HU-05).
+
 export class PaginaPago {
   constructor(page) {
     this.botonMenu = page.getByRole('button', { name: 'Pago y envío' });
     this.encabezado = page.getByRole('heading', { name: 'Pago y envío' });
-
-    // Formulario
     this.direccion = page.getByLabel('Dirección');
     this.ciudad = page.getByLabel('Ciudad');
     this.metodoPago = page.getByLabel('Método de pago');
     this.propina = page.getByLabel('Propina');
     this.botonCalcularTotal = page.getByRole('button', { name: 'Calcular total' });
     this.botonConfirmarPedido = page.getByRole('button', { name: 'Confirmar pedido' });
-
-    // Resumen que aparece después de calcular o confirmar.
-    // Estado, impuesto y total tienen data-testid; el resto se ubica por su texto visible.
     this.estado = page.getByTestId('estado-pago');
     this.subtotal = page.getByText(/^Subtotal: \$/);
     this.envio = page.getByText(/^Envío: \$/);
     this.impuesto = page.getByTestId('impuesto');
     this.propinaResumen = page.getByText(/^Propina: \$/);
     this.total = page.getByTestId('total-pago');
-
-    // Mensaje de la app (éxito o error).
     this.mensaje = page.getByRole('status');
   }
 

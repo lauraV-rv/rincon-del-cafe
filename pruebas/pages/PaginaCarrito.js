@@ -1,4 +1,4 @@
-// Pantalla "Carrito". Se usa solo para preparar el pedido antes de pagar.
+
 export class PaginaCarrito {
   constructor(page) {
     this.botonMenu = page.getByRole('button', { name: 'Carrito', exact: true });

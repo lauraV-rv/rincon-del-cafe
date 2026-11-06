@@ -1,7 +1,5 @@
 // Interruptores de los bugs inyectados.
-// Solo el docente debe conocer esta lista; no se documenta en el README de los estudiantes.
-//
-// MODO_REFERENCIA=true desactiva todos los bugs (versión de referencia para calificar).
+
 
 const REFERENCIA = process.env.MODO_REFERENCIA === 'true';
 

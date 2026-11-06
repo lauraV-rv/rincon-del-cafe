@@ -21,20 +21,20 @@
 
 | ID | Criterio | Caso | Datos | Resultado esperado | Etiqueta | Resultado con la app actual |
 |---|---|---|---|---|---|---|
-| CP01 | Historia | Muestra el total en estado borrador antes de confirmar | Datos base | Mensaje "Total calculado", estado `borrador`, total visible | `@acceptanceTest` | ✅ Pasa |
-| CP02 | C3 | El resumen muestra el subtotal del carrito | Datos base | `Subtotal: $12000` | `@acceptanceTest` | ✅ Pasa |
-| CP03 | C1 | El envío cuesta $5.000 | Datos base | `Envío: $5000` | `@acceptanceTest` | ✅ Pasa |
-| CP04 | C3 | La propina ingresada aparece en el resumen | Propina 500 | `Propina: $500` | `@acceptanceTest` | ✅ Pasa |
-| CP05 | C3 | El total es la suma de subtotal, envío, impuesto y propina | Datos base | total = subtotal + envío + impuesto + propina (con los valores que muestra la app) | `@acceptanceTest` | ✅ Pasa |
-| CP06 | C1, C3 | Sin propina el total es subtotal + envío + impuesto | Propina 0 | `Propina: $0`, envío 5000, total = subtotal + envío + impuesto | `@acceptanceTest` | ✅ Pasa |
-| CP07 | C4 | No calcula el total si falta la dirección | Dirección vacía | Mensaje "Dirección, ciudad y método de pago son obligatorios"; no aparece el total | `@acceptanceTest` | ✅ Pasa |
-| CP08 | C4 | No calcula el total si falta la ciudad | Ciudad vacía | Mismo mensaje; no aparece el total | `@acceptanceTest` | ✅ Pasa |
-| CP09 | C4 | No calcula el total si falta el método de pago | Método "Selecciona" | Mismo mensaje; no aparece el total | `@acceptanceTest` | ✅ Pasa |
-| CP10 | C4 | No confirma el pedido si faltan los datos obligatorios | Todo vacío, clic en *Confirmar pedido* | Mismo mensaje; no se crea el pedido | `@acceptanceTest` | ✅ Pasa |
-| CP11 | Historia | Confirma el pedido cuando los datos están completos | Datos base, calcular y confirmar | Mensaje "Pedido #N enviado", estado `enviado` | `@acceptanceTest` | ✅ Pasa |
-| CP12 | Borde | No calcula el total si el carrito está vacío | Carrito vacío | Mensaje "El carrito está vacío"; no aparece el total | *(sin etiqueta, se corre a mano)* | ✅ Pasa |
-| BUG01 | **C2** | El impuesto es el 19% del subtotal más el envío (Latte) | 1 Latte $12.000, propina 500 | Impuesto `$3230`, total `$20730` | `@bug` | ❌ **Falla**: muestra `$2280` y `$19780` |
-| BUG02 | **C2** | El impuesto es el 19% del subtotal más el envío (Espresso) | 1 Espresso $8.000, propina 500 | Impuesto `$2470`, total `$15970` | `@bug` | ❌ **Falla**: muestra `$1520` y `$15020` |
+| CP01 | Historia | Muestra el total en estado borrador antes de confirmar | Datos base | Mensaje "Total calculado", estado `borrador`, total visible | `@acceptanceTest` |  Pasa |
+| CP02 | C3 | El resumen muestra el subtotal del carrito | Datos base | `Subtotal: $12000` | `@acceptanceTest` |  Pasa |
+| CP03 | C1 | El envío cuesta $5.000 | Datos base | `Envío: $5000` | `@acceptanceTest` |  Pasa |
+| CP04 | C3 | La propina ingresada aparece en el resumen | Propina 500 | `Propina: $500` | `@acceptanceTest` |  Pasa |
+| CP05 | C3 | El total es la suma de subtotal, envío, impuesto y propina | Datos base | total = subtotal + envío + impuesto + propina (con los valores que muestra la app) | `@acceptanceTest` |  Pasa |
+| CP06 | C1, C3 | Sin propina el total es subtotal + envío + impuesto | Propina 0 | `Propina: $0`, envío 5000, total = subtotal + envío + impuesto | `@acceptanceTest` |  Pasa |
+| CP07 | C4 | No calcula el total si falta la dirección | Dirección vacía | Mensaje "Dirección, ciudad y método de pago son obligatorios"; no aparece el total | `@acceptanceTest` |  Pasa |
+| CP08 | C4 | No calcula el total si falta la ciudad | Ciudad vacía | Mismo mensaje; no aparece el total | `@acceptanceTest` |  Pasa |
+| CP09 | C4 | No calcula el total si falta el método de pago | Método "Selecciona" | Mismo mensaje; no aparece el total | `@acceptanceTest` |  Pasa |
+| CP10 | C4 | No confirma el pedido si faltan los datos obligatorios | Todo vacío, clic en *Confirmar pedido* | Mismo mensaje; no se crea el pedido | `@acceptanceTest` |  Pasa |
+| CP11 | Historia | Confirma el pedido cuando los datos están completos | Datos base, calcular y confirmar | Mensaje "Pedido #N enviado", estado `enviado` | `@acceptanceTest` |  Pasa |
+| CP12 | Borde | No calcula el total si el carrito está vacío | Carrito vacío | Mensaje "El carrito está vacío"; no aparece el total | *(sin etiqueta, se corre a mano)* |  Pasa |
+| BUG01 | **C2** | El impuesto es el 19% del subtotal más el envío (Latte) | 1 Latte $12.000, propina 500 | Impuesto `$3230`, total `$20730` | `@bug` |  **Falla**: muestra `$2280` y `$19780` |
+| BUG02 | **C2** | El impuesto es el 19% del subtotal más el envío (Espresso) | 1 Espresso $8.000, propina 500 | Impuesto `$2470`, total `$15970` | `@bug` |  **Falla**: muestra `$1520` y `$15020` |
 
 Además existe un caso de verificación básica fuera de la HU: `el usuario logueado ve el menú de la tienda @smoketest` (tests/login.spec.js).
 
