@@ -1,13 +1,9 @@
-# Pipeline del taller de Playwright · El Rincón del Café (HU-05 · Pago y envío)
-#
-# Adaptado del ci.yml de los talleres de Karate y Serenity BDD.
-# Alcance del taller: levantar la app en el puerto 3000 y ejecutar las pruebas
 # @acceptanceTest. No se despliega a Render.
 # El job queda en verde solo si TODAS las pruebas @acceptanceTest pasan.
 
 name: Pipeline pruebas de aceptación
 
-# 1 · Cuándo se ejecuta (igual que en el ci.yml)
+
 on:
   push:
     branches: [ 'main', 'develop' ]
@@ -15,8 +11,6 @@ on:
     branches: [ 'main', 'develop' ]
   workflow_dispatch:
 
-# 2 · Permisos mínimos: solo leer el código.
-# (El ci.yml pedía issues: write para etiquetar Issues; aquí no se usa.)
 permissions:
   contents: read
 
@@ -28,15 +22,8 @@ jobs:
       NODE_VERSION: '22'
 
     steps:
-      # 3 · Descarga el código del commit (equivale a un git clone).
-      #     Versiones: el ci.yml usaba @v4 (Node 20). GitHub retiró Node 20 de sus
-      #     runners el 23/09/2026, así que se usa la primera versión de cada acción
-      #     que corre en Node 24: checkout@v5, setup-node@v5 y upload-artifact@v6.
       - name: Descargar el repositorio
         uses: actions/checkout@v5
-
-      # 4 · Instala Node.js. Reemplaza a setup-java del ci.yml.
-      #     cache: 'npm' reemplaza al paso de caché de Gradle.
       - name: Instalar Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v5
         with:
@@ -46,7 +33,6 @@ jobs:
             app/package-lock.json
             pruebas/package-lock.json
 
-      # 5 · Instala exactamente lo que dice cada package-lock.json.
       - name: Instalar dependencias de la app
         working-directory: app
         run: npm ci
@@ -55,21 +41,15 @@ jobs:
         working-directory: pruebas
         run: npm ci
 
-      # 6 · Descarga Chromium y las librerías del sistema que necesita.
       - name: Instalar Chromium para Playwright
         working-directory: pruebas
         run: npx playwright install --with-deps chromium
 
-      # 7 · Enciende la app en segundo plano (el & final) en el puerto 3000.
-      #     Su salida queda en app.log por si hay que revisar un error.
       - name: Levantar la app en el puerto 3000
         working-directory: app
         env:
           PORT: 3000
         run: npm start > app.log 2>&1 &
-
-      # 8 · Espera hasta 60 segundos a que http://localhost:3000 responda.
-      #     Si no responde, muestra el log de la app y detiene el pipeline.
       - name: Esperar a que la app responda
         run: |
           for intento in $(seq 1 30); do
@@ -83,14 +63,12 @@ jobs:
           cat app/app.log
           exit 1
 
-      # 9 · Ejecuta solo los casos con @acceptanceTest en el título.
-      #     SIN continue-on-error: si un caso falla, el paso falla y el job queda en rojo.
-      #     Playwright reutiliza la app ya encendida (webServer con reuseExistingServer: true).
+ 
       - name: Ejecutar pruebas de aceptación (@acceptanceTest)
         working-directory: pruebas
         run: npx playwright test --grep @acceptanceTest
 
-      # 10 · Sube el reporte HTML aunque las pruebas fallen (if: always()).
+
       - name: Subir reporte de Playwright
         if: always()
         uses: actions/upload-artifact@v6
